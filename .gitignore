@@ -1,0 +1,8 @@
+# ignore temporary editor files
+*.sw[po]
+
+# ignore Python byte-code
+*.pyc
+
+# ignore generated site
+/output/
