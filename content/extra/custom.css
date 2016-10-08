@@ -1,0 +1,44 @@
+/* define color variables */
+:root {
+    --dark-blue: #3c6eb4;
+    --blue: #6ab0de;
+    --light-blue: #e7f2fa;
+}
+
+/* modify headings on main page */
+a {
+    color: var(--dark-blue);
+}
+a:hover {
+    color: var(--blue);
+}
+
+/* modify buttons on main page */
+a.btn {
+    background-color: var(--dark-blue);
+}
+a.btn:hover {
+    background-color: var(--blue);
+    color: white;
+}
+
+/* modify tag cloud */
+.tag-cloud a {
+    background-color: var(--dark-blue);
+}
+.tag-cloud a:hover {
+    background-color: var(--blue);
+    color: black;
+}
+
+/* modify code listings */
+.highlight {
+    /* set 'ordinary' color so that it matches the 'native' Pygments style */
+    color: #d0d0d0;
+}
+main article pre {
+    /* prevent changing the background color set by the Pygments style */
+    background-color: unset;
+    /* make decorative left border a bit more prominent */
+    border-left: 10px solid hsla(0,0%,75%,0.2);
+}

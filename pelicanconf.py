@@ -33,6 +33,11 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+STATIC_PATHS = ['images', 'extra/custom.css']
+EXTRA_PATH_METADATA = {
+    'extra/custom.css': {'path': 'static/custom.css'},
+}
+
 # Theme
 THEME = 'Flex'
 SITETITLE = SITENAME
@@ -47,3 +52,4 @@ if copyright_year_end == copyright_year_start:
 else:
     COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
 PYGMENTS_STYLE = 'native'
+CUSTOM_CSS = 'static/custom.css'
