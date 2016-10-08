@@ -38,6 +38,10 @@ EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'},
 }
 
+# Enable Admonition Markdown extension
+default_md_extensions = ['codehilite(css_class=highlight)', 'extra']
+MD_EXTENSIONS = default_md_extensions + ['admonition']
+
 # Theme
 THEME = 'Flex'
 SITETITLE = SITENAME

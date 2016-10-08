@@ -42,3 +42,23 @@ main article pre {
     /* make decorative left border a bit more prominent */
     border-left: 10px solid hsla(0,0%,75%,0.2);
 }
+
+/* style Admonition Python Markdown extension in the spirit of the Read the Docs Sphinx theme */
+.admonition {
+    background: var(--light-blue);
+    padding: 12px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+.admonition-title {
+    background: var(--blue);
+    font-weight: bold;
+    display: block;
+    color: #fff;
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+}
+div.admonition.note p {
+    margin-bottom: 6px;
+}
