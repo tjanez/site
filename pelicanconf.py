@@ -20,9 +20,16 @@ AUTHOR_FEED_RSS = None
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['images', 'extra/custom.css']
+STATIC_PATHS = [
+    'images',
+    # custom CSS
+    'extra/custom.css',
+    # GitHub Pages custom domain
+    'extra/CNAME',
+]
 EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'},
+    'extra/CNAME': {'path': 'CNAME'},
 }
 
 # Enable Admonition Markdown extension
