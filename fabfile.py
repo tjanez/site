@@ -56,18 +56,25 @@ def preview():
 
 def gh_pages():
     """Publish to GitHub Pages"""
+    pages_git_dir = os.path.join(os.path.abspath(env.deploy_path), '.git')
+
+    # ensure the main git repository is clean
     main_git_unclean = local('git status --untracked-files=no --porcelain',
                              capture=True)
     if main_git_unclean:
         abort("\n".join(["The main git repository is not clean:",
                          main_git_unclean]))
 
+    # sync local GitHub Pages git repository with remote repository
+    with lcd(env.deploy_path), shell_env(GIT_DIR=pages_git_dir):
+        local('git fetch origin {github_pages_branch}'.format(**env))
+        local('git reset --hard origin/{github_pages_branch}'.format(**env))
+
     clean()
     # build a production version of the site
     preview()
 
     main_commit_sha = local('git rev-parse --short HEAD', capture=True)
-    pages_git_dir = os.path.join(os.path.abspath(env.deploy_path), '.git')
     with lcd(env.deploy_path), shell_env(GIT_DIR=pages_git_dir):
         pages_git_unclean = local('git status --porcelain', capture=True)
         if pages_git_unclean:
