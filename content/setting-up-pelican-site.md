@@ -261,8 +261,13 @@ You have successfully completed setting up a Pelican site. But the site doesn't
 really serve its purpose if its only available on your local computer, does it?
 
 I plan to write a follow-up blog post that will show you how to publish your
-site to GitHub Pages with a sleek Fabric task to do it automatically. Stay
-tuned!
+site to [GitHub Pages](https://pages.github.com/) with a sleek Fabric task to
+do it automatically. Stay tuned!
 
 Meanwhile, you can also browse the [source repo of my Pelican site](
 https://github.com/tjanez/site).
+
+*Update (October 19, 2016):
+The [follow-up blog post]({filename}publishing-to-github-pages.md) on
+publishing your site to GitHub Pages with a sleek Fabric task has been
+published.*
