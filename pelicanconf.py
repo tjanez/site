@@ -18,6 +18,12 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+SOCIAL = (
+    ('github', 'https://github.com/tjanez'),
+    ('twitter', 'https://twitter.com/TadejJanez'),
+    ('rss', '//tadej.ja.nez.si/feeds/all.atom.xml')
+)
+
 DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = [
@@ -39,7 +45,7 @@ MD_EXTENSIONS = default_md_extensions + ['admonition']
 # Theme
 THEME = 'Flex'
 SITETITLE = SITENAME
-SITESUBTITLE = 'Systems Engineer, DevOps'
+SITESUBTITLE = 'DevOps Engineer'
 email = 'tadej.j@nez.si'.encode('utf-8')
 SITELOGO = 'https://seccdn.libravatar.org/avatar/{}?s=256'.format(
     hashlib.md5(email.strip().lower()).hexdigest())
