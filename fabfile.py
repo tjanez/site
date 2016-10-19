@@ -4,8 +4,10 @@ from fabric.contrib.console import confirm
 import os
 import shutil
 
-# Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
+# Get absolute path of project's root directory
+env.project_root = os.path.dirname(env.real_fabfile)
+# Set absolute path of project's deploy directory
+env.deploy_path = os.path.join(env.project_root, 'output')
 
 # Github Pages configuration
 env.github_pages_branch = 'master'
@@ -29,7 +31,8 @@ def clean():
 
 def build():
     """Build local version of site"""
-    local('py3-pelican -s pelicanconf.py')
+    with lcd(env.project_root):
+        local('py3-pelican -s pelicanconf.py')
 
 def rebuild():
     """`clean`, then `build`"""
@@ -38,7 +41,8 @@ def rebuild():
 
 def regenerate():
     """Automatically regenerate site upon file modification"""
-    local('py3-pelican -r -s pelicanconf.py')
+    with lcd(env.project_root):
+        local('py3-pelican -r -s pelicanconf.py')
 
 def serve():
     """Serve site at http://localhost:PORT/"""
@@ -52,21 +56,23 @@ def reserve():
 
 def preview():
     """Build production version of site"""
-    local('py3-pelican -s publishconf.py')
+    with lcd(env.project_root):
+        local('py3-pelican -s publishconf.py')
 
 def gh_pages():
     """Publish to GitHub Pages"""
-    pages_git_dir = os.path.join(os.path.abspath(env.deploy_path), '.git')
+    with lcd(env.project_root):
+        # ensure the main git repository is clean
+        main_git_unclean = local('git status --untracked-files=no --porcelain',
+                                 capture=True)
+        if main_git_unclean:
+            abort("\n".join(["The main git repository is not clean:",
+                             main_git_unclean]))
+        # get main git repository's HEAD's sha checksum
+        main_commit_sha = local('git rev-parse --short HEAD', capture=True)
 
-    # ensure the main git repository is clean
-    main_git_unclean = local('git status --untracked-files=no --porcelain',
-                             capture=True)
-    if main_git_unclean:
-        abort("\n".join(["The main git repository is not clean:",
-                         main_git_unclean]))
-
-    # sync local GitHub Pages git repository with remote repository
-    with lcd(env.deploy_path), shell_env(GIT_DIR=pages_git_dir):
+    with lcd(env.deploy_path):
+        # sync local GitHub Pages git repository with remote repository
         local('git fetch origin {github_pages_branch}'.format(**env))
         local('git reset --hard origin/{github_pages_branch}'.format(**env))
 
@@ -74,8 +80,7 @@ def gh_pages():
     # build a production version of the site
     preview()
 
-    main_commit_sha = local('git rev-parse --short HEAD', capture=True)
-    with lcd(env.deploy_path), shell_env(GIT_DIR=pages_git_dir):
+    with lcd(env.deploy_path):
         pages_git_unclean = local('git status --porcelain', capture=True)
         if pages_git_unclean:
             local('git add --all')
