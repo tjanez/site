@@ -51,3 +51,7 @@ else:
     COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
 PYGMENTS_STYLE = 'native'
 CUSTOM_CSS = 'static/custom.css'
+
+# Plugins
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['summary']

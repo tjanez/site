@@ -14,6 +14,8 @@ it in a [git](https://git-scm.com/) repository, use [Fabric](
 http://www.fabfile.org/) to administer it, change site's default theme and
 finally, create a Hello World blog post.
 
+<!-- PELICAN_END_SUMMARY -->
+
 ## Installing prerequisites
 
 !!! note
