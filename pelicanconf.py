@@ -61,3 +61,6 @@ CUSTOM_CSS = 'static/custom.css'
 # Plugins
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['summary']
+
+# External integrations
+GOOGLE_ANALYTICS = 'UA-85987058-1'
