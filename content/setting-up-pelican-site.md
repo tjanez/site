@@ -4,6 +4,15 @@ Category: Site
 Tags: pelican, fedora, python, fabric, site
 Slug: setting-up-pelican-site
 
+*Update (December 6, 2016): Newer Fedora Pelican packages (
+[3.6.3-6.fc24](http://koji.fedoraproject.org/koji/search?terms=python-pelican-3.6.3-6.fc24&type=build&match=glob),
+[3.6.3-6.fc24](http://koji.fedoraproject.org/koji/search?terms=python-pelican-3.6.3-6.fc25&type=build&match=glob),
+[3.6.3-6.fc26](http://koji.fedoraproject.org/koji/search?terms=python-pelican-3.6.3-6.fc26&type=build&match=glob)
+) [changed naming of Python 3 Pelican executables](
+https://pkgs.fedoraproject.org/cgit/rpms/python-pelican.git/commit/?id=998b43e24184da9293815a5b4e965d6d954cf1a2) from
+`py3-<command>` to `<command>-3` so make sure to update to the latest Fedora
+Pelican packages and use the `<command>-3` syntax.*
+
 *Update (October 19, 2016):
 The [follow-up blog post]({filename}publishing-to-github-pages.md) on
 publishing your site to GitHub Pages with a sleek Fabric task has been
@@ -45,7 +54,7 @@ mkdir my-site
 cd my-site
 ```
 
-To setup a Pelican skeleton for the site, run `py3-pelican-quickstart` and
+To setup a Pelican skeleton for the site, run `pelican-quickstart-3` and
 answer the questions. If you are unsure, you can safely accept the default
 answer.
 
@@ -53,7 +62,7 @@ Before initializing the git repository, clean up the generated skeleton.
 Remove the `Makefile` and edit `fabfile.py` to remove the unnecessary
 functionality and make it work with Python 3 version of Pelican.
 
-All `pelican` commands need to be replaced with `py3-pelican`. In addition,
+All `pelican` commands need to be replaced with `pelican-3`. In addition,
 the `serve()` function needs to be rewritten since it tries to directly import
 the Python 2 version of `pelican.server` which is not available. You can also
 safely remove the parts connected with Rackspace Cloud Files, rsync publishing
@@ -81,7 +90,7 @@ def clean():
 
 def build():
     """Build local version of site"""
-    local('py3-pelican -s pelicanconf.py')
+    local('pelican-3 -s pelicanconf.py')
 
 def rebuild():
     """`clean`, then `build`"""
@@ -90,7 +99,7 @@ def rebuild():
 
 def regenerate():
     """Automatically regenerate site upon file modification"""
-    local('py3-pelican -r -s pelicanconf.py')
+    local('pelican-3 -r -s pelicanconf.py')
 
 def serve():
     """Serve site at http://localhost:PORT/"""
@@ -104,7 +113,7 @@ def reserve():
 
 def preview():
     """Build production version of site"""
-    local('py3-pelican -s publishconf.py')
+    local('pelican-3 -s publishconf.py')
 ```
 
 Since we are using the Python 3 version of Pelican, we can remove the Python 2
