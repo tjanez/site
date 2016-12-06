@@ -4,6 +4,13 @@ Category: Site
 Tags: pelican, fedora, python, fabric, site
 Slug: setting-up-pelican-site
 
+*Update (October 19, 2016):
+The [follow-up blog post]({filename}publishing-to-github-pages.md) on
+publishing your site to GitHub Pages with a sleek Fabric task has been
+published.*
+
+<!-- PELICAN_BEGIN_SUMMARY -->
+
 According to [StaticGen](https://www.staticgen.com/), [Pelican](
 http://getpelican.com/) is the most popular static site generator written in
 [Python](https://www.python.org/). As of Oct 10, 2016 it has
@@ -266,8 +273,3 @@ do it automatically. Stay tuned!
 
 Meanwhile, you can also browse the [source repo of my Pelican site](
 https://github.com/tjanez/site).
-
-*Update (October 19, 2016):
-The [follow-up blog post]({filename}publishing-to-github-pages.md) on
-publishing your site to GitHub Pages with a sleek Fabric task has been
-published.*
