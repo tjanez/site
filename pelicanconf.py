@@ -38,9 +38,15 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
-# Enable Admonition Markdown extension
 default_md_extensions = ['codehilite(css_class=highlight)', 'extra']
-MD_EXTENSIONS = default_md_extensions + ['admonition']
+MD_EXTENSIONS = default_md_extensions + [
+    # Enable Admonition Markdown extension to enable adding rST-style
+    # admonitions to Markdown documents.
+    'admonition',
+    # Enable Table of Contents Markdown extension to create a unique link
+    # anchor for each heading
+    'toc',
+]
 
 # Theme
 THEME = 'Flex'
