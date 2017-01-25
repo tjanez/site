@@ -4,6 +4,16 @@ Category: Python
 Tags: yum, dnf, pip, python, packaging, virtualenv, fedora, centos, rhel
 Slug: dont-mix-yum-dnf-and-pip
 
+*Update (January 25, 2017): Updated [instructions on preparing the Python
+virtual environment to work with setuptools 34+ on CentOS/RHEL 7](
+{filename}dont-mix-yum-dnf-and-pip.md#proper-way-to-to-use-pip-without-mixing-it-with-yumdnf).
+Also updated [the Ansible playbook](
+{filename}dont-mix-yum-dnf-and-pip.md#ansible-playbook-for-installation-of-packages-inside-a-virtual-environment)
+to skip seperately updating pip and setuptools upon creation of a new virtual
+environment on Fedora.*
+
+<!-- PELICAN_BEGIN_SUMMARY -->
+
 Too many times I've seen people using a mix of [yum](http://yum.baseurl.org/)/
 [dnf](http://dnf.baseurl.org/) and [pip](https://pip.pypa.io/) for
 installation of system-wide Python packages This causes [all sorts of problems
@@ -135,13 +145,25 @@ source myvenv/bin/activate
 
 !!! note
 
-    At the time of writing, CentOS 7's system-installed virtualenv package is
-    very old (1.10.1) and creates a virtual environment with very old pip
-    (1.4.1) and setuptools (0.9.8) packages. Hence, it is recommended to update
-    them separately, before installation of other things in the virtual
-    environment with:
+    At the time of writing, CentOS/RHEL 7's system-installed virtualenv package
+    is very old (1.10.1) and creates a virtual environment with very old pip
+    (1.4.1) and [setuptools](https://setuptools.readthedocs.io/) (0.9.8)
+    packages. Hence, it is recommended to update them separately, before
+    installation of other things in the virtual environment.
 
-        pip install -U pip setuptools
+    Since [setuptools version 34](
+    https://setuptools.readthedocs.io/en/latest/history.html#v34-0-0),
+    setuptools package no longer bundles its requirements and relies on
+    installing whell distributions of its requirements. To install these
+    wheels, it needs a newer version pip, hence pip needs to be updated
+    separately before setuptools:
+
+        pip install -U pip
+        pip install -U setuptools
+
+    A complete Ansible playbook for proper creation of a Python virtual
+    environment is provided [later](
+    {filename}dont-mix-yum-dnf-and-pip.md#ansible-playbook-for-installation-of-packages-inside-a-virtual-environment).
 
 Then install whichever Python package you want inside the Python virtual
 environment.
@@ -179,13 +201,23 @@ requirements inside this virtual environment, you can use the following
     - name: Install python-virtualenv package
       package: name=python-virtualenv state=installed
 
-    - name: Create virtual environment with up-to-date pip and setuptools
-      pip:
-        virtualenv: "{{ venv_path }}"
-        name:
-          - pip
-          - setuptools
-        state: latest
+    - block:
+
+      - name: Create virtual environment with up-to-date pip
+        pip:
+          virtualenv: "{{ venv_path }}"
+          name: pip
+          state: latest
+
+      - name: Update virtual environment's setuptools
+        pip:
+          virtualenv: "{{ venv_path }}"
+          name: setuptools
+          state: latest
+
+      when:
+        - ansible_distribution in ["CentOS", "RedHat"]
+        - ansible_distribution_major_version | int == 7
 
     - name: Install project's requirements in virtual environement
       pip:
@@ -204,6 +236,16 @@ requirements inside this virtual environment, you can use the following
     https://releases.ansible.com/ansible/ansible-2.2.1.0-0.3.rc3.tar.gz) which
     fixes the bug.
 
+!!! note
+
+    Fedora comes with [virtualenv 14.0.1+](
+    https://apps.fedoraproject.org/packages/python-virtualenv) which
+    [automatically downloads new releases of pip, setuptools, wheel and their
+    requirements from PyPI](
+    http://virtualenv.readthedocs.io/en/stable/changes/#id11), therefore there
+    is no need to update them separately before installing project's
+    requirements in virtual environment.
+
 If your project's requirements are not pure Python packages, but also include
 packages with [C/C++ extensions](
 https://docs.python.org/3/extending/index.html), they'll need to be built as
@@ -212,12 +254,12 @@ and `python-devel` packages installed. You can use the following Ansible task
 to achieve that:
 
 ```yaml
-    - name: Install project's building prerequisites
-      package: name={{ item }} state=installed
-      with_items:
-        - gcc
-        - python-devel
-        # add other packages required to build your project's requirements
+- name: Install project's building prerequisites
+  package: name={{ item }} state=installed
+  with_items:
+    - gcc
+    - python-devel
+    # add other packages required to build your project's requirements
 ```
 
 Put it before the *Install project's requirements in virtual environement*
