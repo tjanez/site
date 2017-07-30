@@ -28,6 +28,7 @@ DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = [
     'images',
+    'scripts',
     # custom CSS
     'extra/custom.css',
     # GitHub Pages custom domain
