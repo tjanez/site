@@ -1,0 +1,19 @@
+$ ./disk_usage_by_file_type -s ~/Temp/tadej-nexus4-sdcard_backup-on_phone-20170705/ | grep -v '^0 Mb' | sort -n -r
+1483 Mb : image|jpeg; charset=binary
+678 Mb : video|mp4; charset=binary
+642 Mb : audio|mpeg; charset=binary
+405 Mb : audio|ogg; charset=binary
+103 Mb : application|octet-stream; charset=binary
+61 Mb : image|png; charset=binary
+37 Mb : application|zip; charset=binary
+31 Mb : application|x-font-ttf; charset=binary
+26 Mb : application|pdf; charset=binary
+17 Mb : application|java-archive; charset=binary
+11 Mb : text|xml; charset=utf-8
+9 Mb : video|x-ms-asf; charset=binary
+9 Mb : text|plain; charset=utf-8
+7 Mb : audio|x-hx-aac-adts; charset=binary
+6 Mb : application|x-sqlite3; charset=binary
+4 Mb : image|gif; charset=binary
+4 Mb : audio|x-wav; charset=binary
+3 Mb : text|plain; charset=us-ascii

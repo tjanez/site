@@ -1,0 +1,91 @@
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+dd of=tadej-nexus4-sdcard_backup-$(date +%Y%m%d).tar && \
+adb shell cat /backup-errors.txt
+
+7286647+25 records in
+7286659+1 records out
+3730769493 bytes (3.7 GB, 3.5 GiB) copied, 878.248 s, 4.2 MB/s
+
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+gzip | \
+dd of=tadej-nexus4-sdcard_backup-on_computer-$(date +%Y%m%d).tar.gz && \
+adb shell cat /backup-errors.txt
+
+7015269+1 records in
+7015269+1 records out
+3591817815 bytes (3.6 GB, 3.3 GiB) copied, 981.716 s, 3.7 MB/s
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+bzip2 | \
+dd of=tadej-nexus4-sdcard_backup-on_computer-$(date +%Y%m%d).tar.bz2 && \
+adb shell cat /backup-errors.txt
+
+6986750+1 records in
+6986750+1 records out
+3577216194 bytes (3.6 GB, 3.3 GiB) copied, 824.481 s, 4.3 MB/s
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+xz | \
+dd of=tadej-nexus4-sdcard_backup-on_computer-$(date +%Y%m%d).tar.xz && \
+adb shell cat /backup-errors.txt
+
+6967852+1 records in
+6967852+1 records out
+3567540260 bytes (3.6 GB, 3.3 GiB) copied, 1566.34 s, 2.3 MB/s
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+xz --threads=0| \
+dd of=tadej-nexus4-sdcard_backup-on_computer-xz_threads_0-$(date +%Y%m%d).tar.xz && \
+adb shell cat /backup-errors.txt
+
+6971917+1 records in
+6971917+1 records out
+3569622000 bytes (3.6 GB, 3.3 GiB) copied, 810.591 s, 4.4 MB/s
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt' | \
+xz --best --threads=0 | \
+dd of=tadej-nexus4-sdcard_backup-on_computer-xz_best_threads_0-$(date +%Y%m%d).tar.xz && \
+adb shell cat /backup-errors.txt
+
+6953022+1 records in
+6953022+1 records out
+3559947740 bytes (3.6 GB, 3.3 GiB) copied, 895.207 s, 4.0 MB/s
+
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt | \
+  gzip' | \
+dd of=tadej-nexus4-sdcard_backup-on_phone-$(date +%Y%m%d).tar.gz && \
+adb shell cat /backup-errors.txt
+
+7020757+267 records in
+7020899+1 records out
+3594700742 bytes (3.6 GB, 3.3 GiB) copied, 549.493 s, 6.5 MB/s
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt | \
+  gzip --best' | \
+dd of=tadej-nexus4-sdcard_backup-on_phone-gzip_best-$(date +%Y%m%d).tar.gz && \
+adb shell cat /backup-errors.txt
+
+7019491+406 records in
+7019698+1 records out
+3594085803 bytes (3.6 GB, 3.3 GiB) copied, 545.485 s, 6.6 MB/s
+
+
+adb exec-out 'tar --create --exclude=data/media/0/TWRP \
+  data/media/0 2>/backup-errors.txt | \
+  bzip2' | \
+dd of=tadej-nexus4-sdcard_backup-on_phone-$(date +%Y%m%d).tar.bz2 && \
+adb shell cat /backup-errors.txt
+
+6984705+4106 records in
+6986750+1 records out
+3577216194 bytes (3.6 GB, 3.3 GiB) copied, 4236.3 s, 844 kB/s
