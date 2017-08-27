@@ -1,6 +1,8 @@
 import datetime
 import hashlib
 
+import pymdownx.emoji
+
 AUTHOR = 'Tadej Janež'
 SITENAME = 'Tadej Janež'
 SITEURL = ''
@@ -39,7 +41,7 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
-# Default MARKDOWN setting
+# Default MARKDOWN settings
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
@@ -48,13 +50,25 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
-
+# Custom MARKDOWN settings
 # Enable Admonition Markdown extension to enable adding rST-style
 # admonitions to Markdown documents.
 MARKDOWN['extension_configs']['markdown.extensions.admonition'] = {}
 # Enable Table of Contents Markdown extension to create a unique link
 # anchor for each heading
 MARKDOWN['extension_configs']['markdown.extensions.toc'] = {}
+# Enable PyMdown Emoji, a 3rd party Python Markdown extension, to be able to
+# use emojis
+MARKDOWN['extension_configs']['pymdownx.emoji'] = {
+    'emoji_generator': pymdownx.emoji.to_svg,
+    'options': {
+        'attributes': {
+            'align': 'absmiddle',
+            'height': '20px',
+            'width': '20px',
+        },
+    },
+}
 
 # Theme
 THEME = 'Flex'
