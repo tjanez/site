@@ -135,7 +135,7 @@ compression achieved with `xz --best`.
     Rather, it uses the one provided by [`pigz`, a parallel implementation of
     gzip](
     https://github.com/omnirom/android_bootable_recovery/tree/b523650/pigz).
-    
+
     TWRP's [`bzip2` and `xz` commands are provided by Busybox](
     https://github.com/omnirom/android_external_busybox/blob/android-7.1/busybox-full.links#L15).
     Note that [OmniROM still uses Busybox](
