@@ -78,3 +78,4 @@ PLUGINS = ['summary']
 
 # External integrations
 GOOGLE_ANALYTICS = 'UA-85987058-1'
+DISQUS_SITENAME = 'tadejjanez'
