@@ -200,7 +200,7 @@ https://bugs.freedesktop.org/show_bug.cgi?id=102275#c1) on Aug 17, 2017:
 > change with future kernel releases.
 
 To follow his suggestion and permanently add `nouveau.modeset=0` to the
-kernel's command line options, edit `/etc/default/grub.conf` and append
+kernel's command line options, edit `/etc/default/grub` and append
 `nouveau.modeset=0` to the contents of the `GRUB_CMDLINE_LINUX` variable.
 
 Afterwards, run `sudo grub2-mkconfig -o /etc/grub2-efi.cfg` to regenerate
