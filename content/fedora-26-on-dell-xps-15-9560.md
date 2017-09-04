@@ -222,6 +222,7 @@ http://www.fwupd.org/).
 To update the firmware using command line, simply run:
 
 ```bash
+fwupdmgr refresh
 fwupdmgr get-updates
 ```
 
