@@ -4,6 +4,14 @@ Category: Hardware
 Tags: fedora, dell, hardware, laptop
 Slug: fedora-26-on-dell-xps-15-9560
 
+*Update (November 18, 2017): After receiving lots of feedback about issues with
+setting up the graphics to an adequate level, I rewrote [that part of the blog
+post](#setting-up-graphics). I've also added instructions on actually [enabling
+the use of *normal* graphics drivers
+](#enabling-the-use-of-normal-graphics-drivers) since many people unknowingly
+used Mesa's software rasterizer, which causes all sorts of issues.*
+
+
 <!-- PELICAN_BEGIN_SUMMARY -->
 
 Recently, I got a new laptop, a [Dell XPS 15 9560](
@@ -65,13 +73,56 @@ After installation, make sure to update all packages to get the latest
 kernel (4.12 at the time of writing) and other important updates which will
 make Fedora run smoother on this laptop.
 
-## Preventing hangs on boot and soft kernel lockups
+## Setting up graphics
 
-The laptop comes with a discrete graphics card, a [NVIDIA GeForce GTX 1050
-Mobile(GP107M)](
+The laptop comes with a discrete GPU, the [NVIDIA GeForce GTX 1050
+Mobile (GP107M)](
 https://en.wikipedia.org/wiki/GeForce_10_series#GeForce_10_.2810xx.29_series_for_notebooks),
-which unfortunately doesn't work well with the [Nouveau drivers](
-https://nouveau.freedesktop.org/wiki/) yet (as of kernel 4.12).
+and an integrated GPU, the [Intel HD Graphics 630 (Kaby Lake GT2)](
+https://en.wikipedia.org/wiki/Intel_HD_and_Iris_Graphics#Kaby_Lake).
+
+*[GPU]: Graphics processing unit
+
+### Enabling the use of *normal* graphics drivers
+
+Since we needed to use the *basic graphics mode* when [booting Fedora 26 from
+a live USB](#booting-fedora-26-from-a-live-usb), the installer "baked" this
+information into the newly installed system. While this is a safe choice, i.e.
+the system is guaranteed to successfully boot into graphics mode, it also means
+that no advanced graphics features will work.
+When I used the system in this mode, GNOME didn't detect that it runs on a
+HiDPI screen and hence everything on the screen was too small. Connecting an
+external monitor also didn't work and moving around the UI elements was slow
+and sluggish.
+
+!!! note
+
+    If you want to check if you are running in the *basic graphics mode*, go to
+    GNOME's Settings and open the *Details* dialog. If you see `Gallium 0.4 on
+    llvmpipe (...)` or similar under *Graphics*, this means the system is
+    running in the *basic graphics mode*.
+
+The reason for this is that the installer added the `nomodeset` kernel command
+line option to GRUB's settings. Passing the `nomodeset` option to the kernel
+disables [Kernel Mode setting (KMS)](
+https://fedoraproject.org/wiki/Features/KernelModesetting) which in turn forces
+the system to fallback to using [Mesa's Gallium llvmpipe driver](
+https://www.mesa3d.org/llvmpipe.html) which is a software rasterizer that runs
+on the CPU.
+
+To enable *normal* graphics drivers, edit `/etc/default/grub` and remove
+`nomodeset` from the contents of the `GRUB_CMDLINE_LINUX` variable.
+
+Afterwards, run `sudo grub2-mkconfig -o /etc/grub2-efi.cfg` to regenerate
+GRUB's configuration and reboot the system.
+
+*[CPU]: Central processing unit
+
+### A rocky road when trying to use NVIDIA discrete GPU with Nouveau drivers
+
+Unfortunately, NVIDIA GeForce GTX 1050 Mobile (GP107M) doesn't work well with
+the [Nouveau drivers](https://nouveau.freedesktop.org/wiki/) yet (as of kernel
+4.12).
 
 !!! note
 
@@ -186,8 +237,27 @@ Call Trace:
 ---[ end trace 1ee905135b51d0b0 ]---
 ```
 
-Rhys Kidd, a Nouveau developer, wrote the following in [an answer to a bug
-report for a similar issue on freedesktop.org's Bugzilla](
+!!! note
+
+    I've also dipped my toes into setting up a hybrid graphics setup that would
+    use [Nvidia's proprietary driver](
+    http://www.nvidia.com/download/driverResults.aspx/126185/en-us) as
+    [packaged by negativo17](https://negativo17.org/nvidia-driver/) in
+    combination with the open source driver for Intel's integrated GPU.
+
+    I haven't been successful in the limited time I devoted this, but if you
+    want to try this out I suggest you read [Christian Schaller's (manager of
+    Red Hat's Desktop team)](https://blogs.gnome.org/uraeus/) blog post on
+    [Fedora Workstation 26](
+    https://blogs.gnome.org/uraeus/2017/07/13/fedora-workstation-26-is-out/).
+    The post describes the advancements the Red Hat Desktop team has made in
+    making the hybrid graphics setups easy to use, even if one uses the
+    proprietary Nvidia driver.
+
+### Flying high after starting to use Intel's integrated GPU
+
+After encountering a Nouveau developer's (Rhys Kidd) [answer to a bug report
+for a similar issue that I described above on freedesktop.org's Bugzilla](
 https://bugs.freedesktop.org/show_bug.cgi?id=102275#c1) on Aug 17, 2017:
 
 > Nouveau has difficulties with the GTX 1050 Mobile (GP107/NV137) around power
@@ -199,9 +269,20 @@ https://bugs.freedesktop.org/show_bug.cgi?id=102275#c1) on Aug 17, 2017:
 > does mean the Nvidia GPU is unavailable for use). This suggestion might
 > change with future kernel releases.
 
-To follow his suggestion and permanently add `nouveau.modeset=0` to the
-kernel's command line options, edit `/etc/default/grub` and append
-`nouveau.modeset=0` to the contents of the `GRUB_CMDLINE_LINUX` variable.
+I decided to follow his suggestion and disable the Nouveau driver by adding
+`nouveau.modeset=0` to the kernel's command line options. In my observations so
+far, everything is working smootly:
+
+  - automatic scaling of GNOME's interface (it even works if you use laptop's
+    built-in HiDPI display in combination with an external non-HiDPI display),
+  - fast day to day work (i.e. no sluggishness),
+  - suspend and resume (works even after many suspend and resume cycles or if
+    you resume the laptop with/without an external display),
+  - battery life is great (I haven't done any proper benchmarks, but it easily
+    lasts around 4 hours of my ordinary programming work).
+
+To make this permament, edit `/etc/default/grub` and append `nouveau.modeset=0`
+to the contents of the `GRUB_CMDLINE_LINUX` variable.
 
 Afterwards, run `sudo grub2-mkconfig -o /etc/grub2-efi.cfg` to regenerate
 GRUB's configuration.
