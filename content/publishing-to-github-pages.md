@@ -4,6 +4,13 @@ Category: Site
 Tags: pelican, python, fabric, github, site
 Slug: publishing-to-github-pages
 
+*Update (May 25, 2018): Starting with May 1, 2018, [GitHub Pages gained support
+for serving custom domains over HTTPS](https://blog.github.com/2018-05-01-github-pages-custom-domains-https/).
+I've updated the [Setting up a custom domain](#setting-up-a-custom-domain)
+section of this blog post to advise users to use this functionality.*
+
+<!-- PELICAN_BEGIN_SUMMARY -->
+
 In the [previous blog post]({filename}setting-up-pelican-site.md) we looked at
 setting up a [Pelican](http://getpelican.com/) site with [Python 3](
 https://www.python.org/) and [Fabric](http://www.fabfile.org/) on [Fedora 24](
@@ -214,7 +221,7 @@ custom domain's name and commit the changes:
 
 ```
 git add content/extra/CNAME
-git commit -a -m "Change site's URL to http://blog.mysite.com"
+git commit -a -m "Change site's URL to https://blog.mysite.com"
 ```
 
 Before we publish the new version of the site with a custom domain, we need
@@ -255,9 +262,17 @@ Visit the page at your custom domain!
 
 !!! note
 
-    Currently, it is not possible to set up a custom domain with SSL support
-    via GitHub Pages. For more information, see the [issue report with a
-    lengthy discussion](https://github.com/isaacs/github/issues/156).
+    Starting with May 1, 2018, [GitHub Pages gained support for serving custom
+    domains over HTTPS](https://blog.github.com/2018-05-01-github-pages-custom-domains-https/).
+
+    You are advised to take advantage of this functionality and server your
+    site over HTTPS. If you've used a `CNAME` record with your DNS provider,
+    then you should be all set.
+
+    After ensuring your site loads correctly over HTTPS, browse to
+    https://github.com/*username*/*username*.github.io/settings and
+    enable the *Enforce HTTPS* option under the *GitHub Pages* section. This
+    will transparently redirect any HTTP requests to your site to HTTPS.
 
 To see this implemented in practice, browse the
 [source repo of my Pelican site](https://github.com/tjanez/site/tree/5012f31).
