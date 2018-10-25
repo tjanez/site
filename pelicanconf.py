@@ -73,7 +73,7 @@ MARKDOWN['extension_configs']['pymdownx.emoji'] = {
 # Theme
 THEME = 'Flex'
 SITETITLE = SITENAME
-SITESUBTITLE = 'DevOps Engineer'
+SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
 email = 'tadej.j@nez.si'.encode('utf-8')
 SITELOGO = 'https://seccdn.libravatar.org/avatar/{}?s=256'.format(
     hashlib.md5(email.strip().lower()).hexdigest())
