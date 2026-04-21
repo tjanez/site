@@ -32,7 +32,8 @@ def clean():
 def build():
     """Build local version of site"""
     with lcd(env.project_root):
-        local('pelican-3 -s pelicanconf.py')
+        local('echo -n "Using pelican: " && which pelican')
+        local('pelican -s pelicanconf.py')
 
 def rebuild():
     """`clean`, then `build`"""
@@ -42,7 +43,7 @@ def rebuild():
 def regenerate():
     """Automatically regenerate site upon file modification"""
     with lcd(env.project_root):
-        local('pelican-3 -r -s pelicanconf.py')
+        local('pelican -r -s pelicanconf.py')
 
 def serve():
     """Serve site at http://localhost:PORT/"""
@@ -57,7 +58,7 @@ def reserve():
 def preview():
     """Build production version of site"""
     with lcd(env.project_root):
-        local('pelican-3 -s publishconf.py')
+        local('pelican -s publishconf.py')
 
 def gh_pages():
     """Publish to GitHub Pages"""
