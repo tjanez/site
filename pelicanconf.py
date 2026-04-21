@@ -87,8 +87,14 @@ PYGMENTS_STYLE = 'native'
 CUSTOM_CSS = 'static/custom.css'
 
 # Plugins
-PLUGIN_PATHS = ['plugins']
-PLUGINS = ['summary']
+PLUGINS = [
+    # Unofficial community repackaging of the Summary plugin.
+    # NOTE: The official Summary plugin at
+    # https://github.com/getpelican/pelican-plugins/tree/master/summary has not
+    # been migrated to the new https://github.com/pelican-plugins GitHub
+    # organization yet.
+    'minchin.pelican.plugins.summary'
+]
 
 # External integrations
 GOOGLE_ANALYTICS = 'UA-85987058-1'

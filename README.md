@@ -21,7 +21,8 @@ Install [Pelican], [Fabric] and [PyMdown Extensions]:
 pip install \
     pelican~=4.12 \
     fabric~=1.15 \
-    pymdown-extensions~=10.21
+    pymdown-extensions~=10.21 \
+    minchin.pelican.plugins.summary==1.3.1
 ```
 
 _NOTE: The project's [fabfile.py](fabfile.py) is only compatible with Fabric
