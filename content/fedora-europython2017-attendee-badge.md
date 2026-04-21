@@ -11,7 +11,7 @@ https://badges.fedoraproject.org/badge/europython-2017-attendee) is available
 :tada:!
 
 ![Fedora EuroPython 2017 Attendee badge](
-{filename}/images/fedora-europython2017-attendee-badge.svg)
+{static}/images/fedora-europython2017-attendee-badge.svg)
 
 <!-- PELICAN_END_SUMMARY -->
 
@@ -28,7 +28,7 @@ a photo of your conference badge, a link to your talk, ...).
 For example, here is a photo of me and my pimped up conference badge :smiley::
 
 ![Me holding my EuroPython 2017 badge](
-{filename}/images/europyhon2017-photo.jpg)
+{static}/images/europyhon2017-photo.jpg)
 
 And please share this information with other EuroPython 2017 attendees!
 

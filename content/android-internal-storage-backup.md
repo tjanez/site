@@ -167,7 +167,7 @@ deleted data regularly, otherwise I would run of free space.
 This is what makes up the 3558 MiBs of my phone's internal storage:
 
 ![My phone's internal storage usage by file type](
-{filename}/images/android-internal-storage-backup-usage.svg)
+{static}/images/android-internal-storage-backup-usage.svg)
 
 The largest portion is used by JPEG images (mostly pictures taken with the
 phone), followed by MP4 videos (also mostly videos taken with the phone),
@@ -191,4 +191,4 @@ cannot be further compressed to any significant extent.
     https://github.com/lemonsqueeze/disk_usage_by_file_type).
 
     To draw the pie chart, I used [matplotlib](https://matplotlib.org/)
-    ([source]({filename}/scripts/android-internal-storage-backup-usage.py)).
+    ([source]({static}/scripts/android-internal-storage-backup-usage.py)).

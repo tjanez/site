@@ -2,24 +2,34 @@
 
 ## Setup Environment
 
-Create a Python virtual environment with Python 3.9:
-
-_NOTE: Old versions of Pelican don't work on the newest Python 3 versions._
+Create a Python virtual environment named `tadej-site`:
 
 ```bash
-pew new --python python3.9 tadej-site
+pew new tadej-site
 ```
 
-Install these specific versions of Pelican, Fabric and other dependencies:
+Or using pure Python:
+
+```bash
+python -m venv ~/.local/share/virtualenvs/tadej-site
+source ~/.local/share/virtualenvs/tadej-site/bin/activate
+```
+
+Install [Pelican], [Fabric] and [PyMdown Extensions]:
 
 ```bash
 pip install \
-    pelican==3.7.1 \
-    fabric==1.15.0 \
-    Jinja2==3.0.3 \
-    pymdown-extensions==6.0 \
-    markdown==3.0.1
+    pelican~=4.12 \
+    fabric~=1.15 \
+    pymdown-extensions~=10.21
 ```
+
+_NOTE: The project's [fabfile.py](fabfile.py) is only compatible with Fabric
+1.x._
+
+[Pelican]: https://getpelican.com/
+[Fabric]: https://www.fabfile.org/
+[PyMdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
 
 ## Develop
 
