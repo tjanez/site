@@ -40,3 +40,18 @@ To regenerate the site and serve it locally, use:
 ```bash
 fab reserve
 ```
+
+## Publish
+
+To generate a clean production version of the site, run:
+
+```bash
+fab clean
+fab preview
+```
+
+To publish the site to GitHub Pages, run:
+
+```bash
+fab publish
+```
