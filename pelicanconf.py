@@ -4,6 +4,7 @@ import hashlib
 import pymdownx.emoji
 
 AUTHOR = 'Tadej Janež'
+COPYRIGHT_NAME = AUTHOR
 SITENAME = 'Tadej Janež'
 SITEURL = ''
 
@@ -96,6 +97,13 @@ if copyright_year_end == copyright_year_start:
     COPYRIGHT_YEAR = copyright_year_start
 else:
     COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
+
+# License
+CC_LICENSE = {
+    "name": "Creative Commons Attribution-ShareAlike",
+    "version": "4.0",
+    "slug": "by-sa"
+}
 
 # Plugins
 PLUGINS = [
