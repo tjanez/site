@@ -72,6 +72,12 @@ MARKDOWN['extension_configs']['pymdownx.emoji'] = {
 
 # Theme
 THEME = 'Flex'
+THEME_COLOR = 'dark'
+THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
+# Add ability to toggle light/dark manually for the site (and override browser
+# preference).
+THEME_COLOR_ENABLE_USER_OVERRIDE = True
+
 SITETITLE = SITENAME
 SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
 email = 'tadej.j@nez.si'.encode('utf-8')

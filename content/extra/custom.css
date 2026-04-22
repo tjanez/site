@@ -1,8 +1,38 @@
 /* define color variables */
 :root {
+    --near-black: #242121;
+    --white: #fff;
     --dark-blue: #3c6eb4;
     --blue: #6ab0de;
     --light-blue: #e7f2fa;
+    --steel-blue: #a8c8ea;
+    --ice-blue: #e8f4ff;
+    --sky-blue: #b8d8ff;
+    --navy: #1e4060;
+    --navy-dark: #102030;
+    --navy-deep: #003060;
+    --amber-light: #fde68a;
+    --amber-dark: #6e5400;
+    --pink-light: #ffc8cc;
+    --crimson-dark: #450b10;
+
+    /* admonition colors (light mode) */
+    --adm-body-color: var(--near-black);
+    --adm-body-bg: var(--light-blue);
+    --adm-title-color: var(--white);
+    --adm-title-bg: var(--blue);
+
+    /* admonition colors (dark mode) */
+    --adm-note-color: var(--steel-blue);
+    --adm-note-bg: var(--navy-dark);
+    --adm-note-title-color: var(--ice-blue);
+    --adm-note-title-bg: var(--navy);
+    --adm-hint-title-color: var(--sky-blue);
+    --adm-hint-title-bg: var(--navy-deep);
+    --adm-warning-title-color: var(--amber-light);
+    --adm-warning-title-bg: var(--amber-dark);
+    --adm-danger-title-color: var(--pink-light);
+    --adm-danger-title-bg: var(--crimson-dark);
 }
 
 /* modify headings on main page */
@@ -43,22 +73,89 @@ main article pre {
     border-left: 10px solid hsla(0,0%,75%,0.2);
 }
 
-/* style Admonition Python Markdown extension in the spirit of the Read the Docs Sphinx theme */
-.admonition {
-    background: var(--light-blue);
-    padding: 12px;
-    margin-bottom: 24px;
-    box-sizing: border-box;
+/* Admonition title: stretch edge-to-edge (shared geometry for both themes) */
+div.admonition p.admonition-title {
+    margin: -0.5em -1.25em 1.25em;
+    padding: 0.5em 1.25em;
 }
-.admonition-title {
-    background: var(--blue);
-    font-weight: bold;
-    display: block;
-    color: #fff;
-    margin: -12px;
-    padding: 6px 12px;
-    margin-bottom: 12px;
+
+/* Light theme admonition styling — all types use site blue palette */
+div.admonition.note,
+div.admonition.important,
+div.admonition.hint,
+div.admonition.tip,
+div.admonition.attention,
+div.admonition.caution,
+div.admonition.warning,
+div.admonition.danger,
+div.admonition.error {
+    color: var(--adm-body-color);
+    background-color: var(--adm-body-bg);
 }
-div.admonition.note p {
-    margin-bottom: 6px;
+div.admonition p.admonition-title {
+    color: var(--adm-title-color);
+    background-color: var(--adm-title-bg);
+}
+
+/* Dark theme admonition title backgrounds */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) div.admonition.note,
+    body:not(.light-theme) div.admonition.important {
+        color: var(--adm-note-color);
+        background-color: var(--adm-note-bg);
+    }
+    body:not(.light-theme) div.admonition.note p.admonition-title,
+    body:not(.light-theme) div.admonition.important p.admonition-title {
+        color: var(--adm-note-title-color);
+        background-color: var(--adm-note-title-bg);
+    }
+    body:not(.light-theme) div.admonition.hint p.admonition-title,
+    body:not(.light-theme) div.admonition.tip p.admonition-title {
+        color: var(--adm-hint-title-color);
+        background-color: var(--adm-hint-title-bg);
+    }
+    body:not(.light-theme) div.admonition.attention p.admonition-title,
+    body:not(.light-theme) div.admonition.caution p.admonition-title,
+    body:not(.light-theme) div.admonition.warning p.admonition-title {
+        color: var(--adm-warning-title-color);
+        background-color: var(--adm-warning-title-bg);
+    }
+    body:not(.light-theme) div.admonition.danger p.admonition-title,
+    body:not(.light-theme) div.admonition.error p.admonition-title {
+        color: var(--adm-danger-title-color);
+        background-color: var(--adm-danger-title-bg);
+    }
+}
+body.dark-theme div.admonition.note,
+body.dark-theme div.admonition.important {
+    color: var(--adm-note-color);
+    background-color: var(--adm-note-bg);
+}
+body.dark-theme div.admonition.note p.admonition-title,
+body.dark-theme div.admonition.important p.admonition-title {
+    color: var(--adm-note-title-color);
+    background-color: var(--adm-note-title-bg);
+}
+body.dark-theme div.admonition.hint p.admonition-title,
+body.dark-theme div.admonition.tip p.admonition-title {
+    color: var(--adm-hint-title-color);
+    background-color: var(--adm-hint-title-bg);
+}
+body.dark-theme div.admonition.attention p.admonition-title,
+body.dark-theme div.admonition.caution p.admonition-title,
+body.dark-theme div.admonition.warning p.admonition-title {
+    color: var(--adm-warning-title-color);
+    background-color: var(--adm-warning-title-bg);
+}
+body.dark-theme div.admonition.danger p.admonition-title,
+body.dark-theme div.admonition.error p.admonition-title {
+    color: var(--adm-danger-title-color);
+    background-color: var(--adm-danger-title-bg);
+}
+
+/* Temporarily remove admonition icons to work-around a Font Awesome bug:
+   https://github.com/alexandrevicenzi/Flex/issues/340
+*/
+div.admonition p.admonition-title::before {
+    display: none;
 }
