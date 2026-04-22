@@ -42,33 +42,35 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
-# Default MARKDOWN settings
+# Markdown
 MARKDOWN = {
+    # Markdown Extensions configuration
     'extension_configs': {
+        # Pelican defaults — must be kept since defining MARKDOWN replaces them.
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
-    },
-    'output_format': 'html5',
-}
-# Custom MARKDOWN settings
-# Enable Admonition Markdown extension to enable adding rST-style
-# admonitions to Markdown documents.
-MARKDOWN['extension_configs']['markdown.extensions.admonition'] = {}
-# Enable Table of Contents Markdown extension to create a unique link
-# anchor for each heading
-MARKDOWN['extension_configs']['markdown.extensions.toc'] = {}
-# Enable PyMdown Emoji, a 3rd party Python Markdown extension, to be able to
-# use emojis
-MARKDOWN['extension_configs']['pymdownx.emoji'] = {
-    'emoji_generator': pymdownx.emoji.to_svg,
-    'options': {
-        'attributes': {
-            'align': 'absmiddle',
-            'height': '20px',
-            'width': '20px',
+        # Enable Admonition Markdown extension to enable adding rST-style
+        # admonitions to Markdown documents.
+        'markdown.extensions.admonition': {},
+        # Enable Table of Contents Markdown extension to create a unique link
+        # anchor for each heading.
+        'markdown.extensions.toc': {},
+        # Enable PyMdown Emoji, a 3rd party Python Markdown extension, to be able
+        # to use emojis.
+        'pymdownx.emoji': {
+            'emoji_generator': pymdownx.emoji.to_svg,
+            'options': {
+                'attributes': {
+                    'align': 'absmiddle',
+                    'height': '20px',
+                    'width': '20px',
+                },
+            },
         },
     },
+    # Also Pelican default that needs to be manually carried over.
+    'output_format': 'html5',
 }
 
 # Theme
