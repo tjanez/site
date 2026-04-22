@@ -3,6 +3,12 @@
     --near-black: #242121;
     --white: #fff;
     --dark-blue: #3c6eb4;
+    --code-light: #f8f8f8;
+    --code-text-light: #000000;
+    --code-border-light: #e0e0d8;
+    --code-dark: #232629;
+    --code-text: #cccccc;
+    --code-border-dark: #49483e;
     --blue: #6ab0de;
     --light-blue: #e7f2fa;
     --steel-blue: #a8c8ea;
@@ -61,16 +67,25 @@ a.btn:hover {
     color: black;
 }
 
-/* modify code listings */
-.highlight {
-    /* set 'ordinary' color so that it matches the 'native' Pygments style */
-    color: #d0d0d0;
+/* inline code: harmonize with the chosen Pygments styles (tango/stata-dark) */
+/* light mode: match tango (overrides Flex default #f7f7f9 bg and #c25 text) */
+main article :not(pre)>code {
+    color: var(--code-text-light);
+    background-color: var(--code-light);
+    border-color: var(--code-border-light);
 }
-main article pre {
-    /* prevent changing the background color set by the Pygments style */
-    background-color: unset;
-    /* make decorative left border a bit more prominent */
-    border-left: 10px solid hsla(0,0%,75%,0.2);
+/* dark mode: match stata-dark (overrides Flex default near-black #080808 bg) */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) main article :not(pre)>code {
+        color: var(--code-text);
+        background-color: var(--code-dark);
+        border-color: var(--code-border-dark);
+    }
+}
+body.dark-theme main article :not(pre)>code {
+    color: var(--code-text);
+    background-color: var(--code-dark);
+    border-color: var(--code-border-dark);
 }
 
 /* Admonition title: stretch edge-to-edge (shared geometry for both themes) */

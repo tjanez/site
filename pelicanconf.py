@@ -78,6 +78,13 @@ THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 # preference).
 THEME_COLOR_ENABLE_USER_OVERRIDE = True
 
+# CSS customizations
+CUSTOM_CSS = 'static/custom.css'
+
+# Code highlighting
+PYGMENTS_STYLE = 'tango'
+PYGMENTS_STYLE_DARK = 'stata-dark'
+
 SITETITLE = SITENAME
 SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
 email = 'tadej.j@nez.si'.encode('utf-8')
@@ -89,8 +96,6 @@ if copyright_year_end == copyright_year_start:
     COPYRIGHT_YEAR = copyright_year_start
 else:
     COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
-PYGMENTS_STYLE = 'native'
-CUSTOM_CSS = 'static/custom.css'
 
 # Plugins
 PLUGINS = [
