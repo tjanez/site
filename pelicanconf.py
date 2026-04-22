@@ -55,7 +55,7 @@ MARKDOWN = {
         'markdown.extensions.admonition': {},
         # Enable Table of Contents Markdown extension to create a unique link
         # anchor for each heading.
-        'markdown.extensions.toc': {},
+        'markdown.extensions.toc': {'permalink': True},
         # Enable PyMdown Emoji, a 3rd party Python Markdown extension, to be able
         # to use emojis.
         'pymdownx.emoji': {
