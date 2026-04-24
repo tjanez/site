@@ -23,7 +23,8 @@ AUTHOR_FEED_RSS = None
 
 SOCIAL = (
     ('github', 'https://github.com/tjanez'),
-    ('twitter', 'https://twitter.com/TadejJanez'),
+    ('linkedin', 'https://www.linkedin.com/in/tadej-janez/'),
+    ('x-twitter', 'https://x.com/TadejJanez'),
     ('rss', '//tadej.ja.nez.si/feeds/all.atom.xml')
 )
 
