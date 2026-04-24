@@ -47,7 +47,6 @@ MENUITEMS = (
     ("Archives", "/archives.html"),
     ("Categories", "/categories.html"),
     ("Tags", "/tags.html"),
-    ("Atom", "/feeds/all.atom.xml"),
 )
 
 DEFAULT_PAGINATION = 10
