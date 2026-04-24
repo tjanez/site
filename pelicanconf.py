@@ -7,7 +7,7 @@ import hashlib
 import pymdownx.emoji
 
 AUTHOR = 'Tadej Janež'
-SITEURL = '' # NOTE: This is set to the actual site URL in publishconf.py.
+SITEURL = 'http://localhost:8000' # NOTE: This is set to the actual site URL in publishconf.py.
 SITENAME = 'Tadej Janež'
 SITETITLE = SITENAME
 SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
@@ -28,18 +28,17 @@ TIMEZONE = 'Europe/Ljubljana'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+# Atom feeds
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/category-{slug}.atom.xml'
+TAG_FEED_ATOM = 'feeds/tag-{slug}.atom.xml'
 
+# Social links
 SOCIAL = (
     ('github', 'https://github.com/tjanez'),
     ('linkedin', 'https://www.linkedin.com/in/tadej-janez/'),
     ('x-twitter', 'https://x.com/TadejJanez'),
-    ('rss', '//tadej.ja.nez.si/feeds/all.atom.xml')
+    ('rss', '/feeds/all.atom.xml')
 )
 
 # Main menu
