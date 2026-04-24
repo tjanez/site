@@ -130,5 +130,6 @@ PLUGINS = [
 ]
 
 # External integrations
-GOOGLE_ANALYTICS = 'UA-85987058-1'
+# Google Analytics 4
+GOOGLE_GLOBAL_SITE_TAG = 'G-7EYHFGQKP1'
 DISQUS_SITENAME = 'tadejjanez'
