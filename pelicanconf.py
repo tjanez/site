@@ -1,12 +1,26 @@
+# NOTE: The content of this file is over-ridden by publishconf.py when
+# publishing, so ensure you also check that file.
+
 import datetime
 import hashlib
 
 import pymdownx.emoji
 
 AUTHOR = 'Tadej Janež'
-COPYRIGHT_NAME = AUTHOR
+SITEURL = '' # NOTE: This is set to the actual site URL in publishconf.py.
 SITENAME = 'Tadej Janež'
-SITEURL = ''
+SITETITLE = SITENAME
+SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
+email = 'tadej.j@nez.si'.encode('utf-8')
+SITELOGO = 'https://seccdn.libravatar.org/avatar/{}?s=256'.format(
+    hashlib.md5(email.strip().lower()).hexdigest())
+COPYRIGHT_NAME = AUTHOR
+copyright_year_start = 2016
+copyright_year_end = datetime.date.today().year
+if copyright_year_end == copyright_year_start:
+    COPYRIGHT_YEAR = copyright_year_start
+else:
+    COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
 
 PATH = 'content'
 
@@ -90,17 +104,6 @@ CUSTOM_CSS = 'static/custom.css'
 PYGMENTS_STYLE = 'tango'
 PYGMENTS_STYLE_DARK = 'stata-dark'
 
-SITETITLE = SITENAME
-SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
-email = 'tadej.j@nez.si'.encode('utf-8')
-SITELOGO = 'https://seccdn.libravatar.org/avatar/{}?s=256'.format(
-    hashlib.md5(email.strip().lower()).hexdigest())
-copyright_year_start = 2016
-copyright_year_end = datetime.date.today().year
-if copyright_year_end == copyright_year_start:
-    COPYRIGHT_YEAR = copyright_year_start
-else:
-    COPYRIGHT_YEAR = '{}-{}'.format(copyright_year_start, copyright_year_end)
 
 # License
 CC_LICENSE = {
