@@ -12,7 +12,7 @@ SITENAME = 'Tadej Janež'
 SITETITLE = SITENAME
 SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
 
-SITELOGO = SITEURL + '/images/profile.png'
+SITELOGO = '/images/profile.png'
 COPYRIGHT_NAME = AUTHOR
 copyright_year_start = 2016
 copyright_year_end = datetime.date.today().year
