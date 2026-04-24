@@ -74,7 +74,8 @@ MARKDOWN = {
 }
 
 # Theme
-THEME = 'Flex'
+from pelican.themes import reflex
+THEME = reflex.path()
 THEME_COLOR = 'dark'
 THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 # Add ability to toggle light/dark manually for the site (and override browser

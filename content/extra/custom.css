@@ -2,6 +2,7 @@
 :root {
     --near-black: #242121;
     --white: #fff;
+    --sidebar-dark: #222;
     --dark-blue: #3c6eb4;
     --code-light: #f8f8f8;
     --code-text-light: #000000;
@@ -41,6 +42,18 @@
     --adm-danger-title-bg: var(--crimson-dark);
 }
 
+/* sidebar: explicitly set dark background to ensure correct rendering.
+   Reflex (unlike Flex) does not reliably apply its own dark sidebar color,
+   so we pin it here. */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) aside {
+        background-color: var(--sidebar-dark);
+    }
+}
+body.dark-theme aside {
+    background-color: var(--sidebar-dark);
+}
+
 /* modify headings on main page */
 a {
     color: var(--dark-blue);
@@ -61,6 +74,9 @@ a.btn:hover {
 /* modify tag cloud */
 .tag-cloud a {
     background-color: var(--dark-blue);
+    /* Reflex (unlike Flex) ships no margin on .tag-cloud a, causing tags
+       to render without spacing */
+    margin: 0.1em 0.2em;
 }
 .tag-cloud a:hover {
     background-color: var(--blue);
