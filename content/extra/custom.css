@@ -83,6 +83,24 @@ a.btn:hover {
     color: black;
 }
 
+/* theme toggle: second line below social icons, icon sized to match them */
+p.theme-toggle {
+    margin-top: 0.5em;
+}
+p.theme-toggle a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+p.theme-toggle a:hover {
+    color: var(--white);
+    opacity: 0.75;
+}
+p.theme-toggle #theme-toggle-text {
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
 /* inline code: harmonize with the chosen Pygments styles (tango/stata-dark) */
 /* light mode: match tango (overrides Flex default #f7f7f9 bg and #c25 text) */
 main article :not(pre)>code {
