@@ -42,6 +42,15 @@ SOCIAL = (
     ('rss', '//tadej.ja.nez.si/feeds/all.atom.xml')
 )
 
+# Main menu
+MAIN_MENU = True
+MENUITEMS = (
+    ("Archives", "/archives.html"),
+    ("Categories", "/categories.html"),
+    ("Tags", "/tags.html"),
+    ("Atom", "/feeds/all.atom.xml"),
+)
+
 DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = [
