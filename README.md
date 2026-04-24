@@ -21,7 +21,6 @@ source ~/.local/share/virtualenvs/tadej-site/bin/activate
 
 _NOTE: Using Python 3.14 doesn't work with [Reflex] theme yet._
 
-
 Install [Pelican], [Fabric] and [PyMdown Extensions]:
 
 ```bash
