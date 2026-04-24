@@ -214,6 +214,11 @@ div.admonition p.admonition-title::before {
     display: none;
 }
 
+/* before/after image comparison: stacked vertically, full width */
+.image-compare figure {
+    margin: 0 0 1em;
+}
+
 /* Heading permalink anchors: hidden by default, visible on heading hover (Sphinx-style) */
 .headerlink {
     visibility: hidden;
