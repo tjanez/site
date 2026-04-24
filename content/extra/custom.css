@@ -54,6 +54,11 @@ body.dark-theme aside {
     background-color: var(--sidebar-dark);
 }
 
+/* main menu: increase nav link size (theme default is 12px) */
+main nav a {
+    font-size: 17px;
+}
+
 /* modify headings on main page */
 a {
     color: var(--dark-blue);
