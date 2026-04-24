@@ -15,7 +15,7 @@ used Mesa's software rasterizer, which causes all sorts of issues.*
 <!-- PELICAN_BEGIN_SUMMARY -->
 
 Recently, I got a new laptop, a [Dell XPS 15 9560](
-http://www.dell.com/en-us/shop/dell-laptops/xps-15/spd/xps-15-9560-laptop) with
+https://en.wikipedia.org/wiki/Dell_XPS#XPS_15_(9560,_Early_2017)) with
 4k display, 32 GiBs of RAM and 1 TiB M.2 SSD drive. Quite nice specs, aren't
 they :wink:?
 
@@ -34,7 +34,7 @@ of the setup.
 
 Before installing Fedora 26 on the system, it is necessary to modify some UEFI
 settings. [They are nicely summed up in the ArchWiki page for this laptop](
-https://wiki.archlinux.org/index.php/Dell_XPS_15_9560#UEFI):
+https://wiki.archlinux.org/title/Dell_XPS_15_(9560)):
 
 - Change the *SATA Mode* from the default *RAID* to *AHCI*. This will allow
   Linux to detect the NVMe SSD.
