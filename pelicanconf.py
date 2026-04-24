@@ -11,9 +11,8 @@ SITEURL = 'http://localhost:8000' # NOTE: This is set to the actual site URL in 
 SITENAME = 'Tadej Janež'
 SITETITLE = SITENAME
 SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
-email = 'tadej.j@nez.si'.encode('utf-8')
-SITELOGO = 'https://seccdn.libravatar.org/avatar/{}?s=256'.format(
-    hashlib.md5(email.strip().lower()).hexdigest())
+
+SITELOGO = SITEURL + '/images/profile.png'
 COPYRIGHT_NAME = AUTHOR
 copyright_year_start = 2016
 copyright_year_end = datetime.date.today().year
