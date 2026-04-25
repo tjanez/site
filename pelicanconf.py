@@ -10,7 +10,7 @@ AUTHOR = 'Tadej Janež'
 SITEURL = 'http://localhost:8000' # NOTE: This is set to the actual site URL in publishconf.py.
 SITENAME = 'Tadej Janež'
 SITETITLE = SITENAME
-SITESUBTITLE = 'Passionate about DevOps, Python and OSS'
+SITESUBTITLE = 'Passion for tech, security and privacy.<br>PhD in AI. Hacker by ♥.'
 
 SITELOGO = '/images/profile.png'
 COPYRIGHT_NAME = AUTHOR
